@@ -1,0 +1,7 @@
+.idea/
+CMakeLists.txt
+cmake-build-debug/
+stack/
+.DS_Store
+*.txt
+*.out
