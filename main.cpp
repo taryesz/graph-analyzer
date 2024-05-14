@@ -2,21 +2,18 @@
 #include "classes/vertex.h"
 #include "input.h"
 #include "degree-sequence.h"
+#include "components.h"
 
 int main() {
 
     // get the number of graphs a user wants to process
     const int number_of_graphs = get_user_input();
 
-    // printf("\n%d\n", number_of_graphs);
-
     // start the loop of vertex processor
     for (int i = 0; i < number_of_graphs; i++) {
 
         // get the number of vertices of a vertex
         const int number_of_vertices = get_user_input();
-
-        // printf("graph vertices: %d\n", number_of_vertices);
 
         // create a graph to store vertices in
         vertex graph[number_of_vertices];
@@ -53,19 +50,13 @@ int main() {
             // add the vertex to the graph
             graph[j] = *new_vertex;
 
-            // printf("vertex index: %d\n", graph[i].get_index());
-            // printf("vertex degree: %d\n", graph[i].get_degree());
-            // printf("vertex neighbors: ");
-            // graph[i].get_neighbors()->print();
-            // printf("\n");
-
         }
 
-        // *launch the graph processor here*
-
         get_degree_sequence(graph, number_of_vertices); // calculate the degree sequence of the graph
+        is_connected(graph, number_of_vertices); // check if the graph is connected
 
     }
 
     return 0;
+
 }
