@@ -3,6 +3,7 @@
 #include "input.h"
 #include "degree-sequence.h"
 #include "components.h"
+#include "complement-graph.h"
 
 int main() {
 
@@ -54,6 +55,7 @@ int main() {
 
         get_degree_sequence(graph, number_of_vertices); // calculate the degree sequence of the graph
         is_connected(graph, number_of_vertices); // check if the graph is connected
+        get_number_of_edge_complement(graph, number_of_vertices); // calculate the number of missing edges to make the graph a full one
 
     }
 
