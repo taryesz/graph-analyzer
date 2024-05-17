@@ -14,18 +14,23 @@ void vertex::set_degree(int value) {
     this->degree = value;
 }
 
-void vertex::set_neighbors(list* value) {
-    this->neighbors = value;
-}
+//void vertex::set_neighbors(list* value) {
+//    this->neighbors = value;
+//}
 
-[[nodiscard]] int vertex::get_index() const {
+int vertex::get_index() const {
     return this->index;
 }
 
-[[nodiscard]] int vertex::get_degree() const {
+int vertex::get_degree() const {
     return this->degree;
 }
 
-[[nodiscard]] list* vertex::get_neighbors() const {
+list* vertex::get_neighbors() const {
     return this->neighbors;
+}
+
+vertex::~vertex() {
+    this->neighbors->clear();
+    delete this->neighbors;
 }

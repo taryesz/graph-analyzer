@@ -13,10 +13,10 @@ void node::set_next(node* value) {
     this->next = value;
 }
 
-[[nodiscard]] int node::get_content() const {
+int node::get_content() const {
     return this->content;
 }
 
-[[nodiscard]] node* node::get_next() const {
+node* node::get_next() const {
     return this->next;
 }

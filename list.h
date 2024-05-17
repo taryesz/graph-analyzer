@@ -15,12 +15,14 @@ public:
 
     void clear();
 
-    [[nodiscard]] node* pop();
+    // node* pop();
 
-    [[nodiscard]] node* get_head() const;
+    node* get_head() const;
 
-    [[nodiscard]] int count();
+    // node* get_tail() const;
 
-    void print();
+    // int count();
+
+    // void print();
 
 };

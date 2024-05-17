@@ -1,8 +1,12 @@
 #include <iostream>
-#include "classes/vertex.h"
+#include "vertex.h"
+#include "array.h"
 #include "input.h"
 #include "degree-sequence.h"
 #include "components.h"
+#include "bipartiteness.h"
+// #include "greedy-coloring.h"
+// #include "sub-cycle.h"
 #include "complement-graph.h"
 
 int main() {
@@ -17,16 +21,13 @@ int main() {
         const int number_of_vertices = get_user_input();
 
         // create a graph to store vertices in
-        vertex graph[number_of_vertices];
+        auto** graph = new vertex*[number_of_vertices];
 
         // start the loop of vertices processor
         for (int j = 0; j < number_of_vertices; j++) {
 
             // create a vertex
             auto* new_vertex = new vertex();
-
-            // create a list to store the adjacent vertices' indexes
-            auto* new_vertex_neighbors = new list();
 
             // get the vertex's degree (i.e. number of its neighbors)
             const int new_vertex_degree = get_user_input();
@@ -41,21 +42,29 @@ int main() {
             for (int k = 0; k < new_vertex_degree; k++) {
 
                 // get the next neighbor and add it to the list
-                new_vertex_neighbors->push(get_user_input());
+                new_vertex->get_neighbors()->push(get_user_input());
 
             }
 
-            // add the list to the vertex
-            new_vertex->set_neighbors(new_vertex_neighbors);
-
             // add the vertex to the graph
-            graph[j] = *new_vertex;
+            graph[j] = new_vertex;
 
         }
 
         get_degree_sequence(graph, number_of_vertices); // calculate the degree sequence of the graph
-        is_connected(graph, number_of_vertices); // check if the graph is connected
+        get_connectivity_number(graph, number_of_vertices); // check how many parts the graph consists of
+        is_bipartite(graph, number_of_vertices); // check if the graph is bipartite
+        printf("?\n");
+        printf("?\n");
+        printf("?\n");
+        printf("?\n");
+        printf("?\n");
+        printf("?\n");
         get_number_of_edge_complement(graph, number_of_vertices); // calculate the number of missing edges to make the graph a full one
+
+        // delete all the vertices from the graph and the graph itself
+        for (int j = 0; j < number_of_vertices; j++) delete graph[j];
+        delete [] graph;
 
     }
 

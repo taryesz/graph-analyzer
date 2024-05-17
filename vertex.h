@@ -15,12 +15,14 @@ public:
 
     void set_degree(int value);
 
-    void set_neighbors(list* value);
+    // void set_neighbors(list* value);
 
-    [[nodiscard]] int get_index() const;
+    int get_index() const;
 
-    [[nodiscard]] int get_degree() const;
+    int get_degree() const;
 
-    [[nodiscard]] list* get_neighbors() const;
+    list* get_neighbors() const;
+
+    ~vertex();
 
 };
