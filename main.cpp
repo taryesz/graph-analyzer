@@ -5,7 +5,7 @@
 #include "degree-sequence.h"
 #include "components.h"
 #include "bipartiteness.h"
-// #include "greedy-coloring.h"
+#include "greedy-coloring.h"
 // #include "sub-cycle.h"
 #include "complement-graph.h"
 
@@ -56,7 +56,7 @@ int main() {
         is_bipartite(graph, number_of_vertices); // check if the graph is bipartite
         printf("?\n");
         printf("?\n");
-        printf("?\n");
+        color_the_graph_greedily(graph, number_of_vertices); // printf("?\n");
         printf("?\n");
         printf("?\n");
         printf("?\n");
