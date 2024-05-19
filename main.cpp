@@ -56,7 +56,7 @@ int main() {
         is_bipartite(graph, number_of_vertices); // check if the graph is bipartite
         printf("?\n");
         printf("?\n");
-        color_the_graph_greedily(graph, number_of_vertices); // printf("?\n");
+        color_the_graph_greedily(graph, number_of_vertices); // get the sequence of colors of each vertex
         printf("?\n");
         printf("?\n");
         printf("?\n");

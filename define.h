@@ -6,5 +6,6 @@ enum constants {
     last_digit_ascii = '9',
     factor = 10,
     vertex_index_increment = 1,
-    default_bipartitenes_color = 0
+    default_bipartitenes_color = 0,
+    default_coloring_color = 1
 };
