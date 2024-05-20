@@ -6,7 +6,6 @@
 #include "components.h"
 #include "bipartiteness.h"
 #include "greedy-coloring.h"
-// #include "sub-cycle.h"
 #include "complement-graph.h"
 
 int main() {
@@ -17,11 +16,11 @@ int main() {
     // start the loop of vertex processor
     for (int i = 0; i < number_of_graphs; i++) {
 
-        // get the number of vertices of a vertex
-        const int number_of_vertices = get_user_input();
+        // get the number of vertices of a graph
+        const long long int number_of_vertices = get_user_input();
 
         // create a graph to store vertices in
-        auto** graph = new vertex*[number_of_vertices];
+        auto** graph = new vertex*[static_cast<size_t>(number_of_vertices)];
 
         // start the loop of vertices processor
         for (int j = 0; j < number_of_vertices; j++) {
@@ -51,12 +50,12 @@ int main() {
 
         }
 
-        get_degree_sequence(graph, number_of_vertices); // calculate the degree sequence of the graph
-        get_connectivity_number(graph, number_of_vertices); // check how many parts the graph consists of
-        is_bipartite(graph, number_of_vertices); // check if the graph is bipartite
+        get_degree_sequence(graph, (int) number_of_vertices); // calculate the degree sequence of the graph
+        get_connectivity_number(graph, (int) number_of_vertices); // check how many parts the graph consists of
+        is_bipartite(graph, (int) number_of_vertices); // check if the graph is bipartite
         printf("?\n");
         printf("?\n");
-        color_the_graph_greedily(graph, number_of_vertices); // get the sequence of colors of each vertex
+        color_the_graph_greedily(graph, (int) number_of_vertices); // get the sequence of colors of each vertex
         printf("?\n");
         printf("?\n");
         printf("?\n");

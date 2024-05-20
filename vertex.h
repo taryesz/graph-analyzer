@@ -17,11 +17,11 @@ public:
 
     // void set_neighbors(list* value);
 
-    int get_index() const;
+    [[nodiscard]] int get_index() const;
 
-    int get_degree() const;
+    [[nodiscard]] int get_degree() const;
 
-    list* get_neighbors() const;
+    [[nodiscard]] list* get_neighbors() const;
 
     ~vertex();
 

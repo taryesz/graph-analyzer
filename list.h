@@ -17,7 +17,7 @@ public:
 
     // node* pop();
 
-    node* get_head() const;
+    [[nodiscard]] node* get_head() const;
 
     // node* get_tail() const;
 

@@ -14,10 +14,6 @@ void vertex::set_degree(int value) {
     this->degree = value;
 }
 
-//void vertex::set_neighbors(list* value) {
-//    this->neighbors = value;
-//}
-
 int vertex::get_index() const {
     return this->index;
 }

@@ -14,8 +14,8 @@ public:
 
     void set_next(node* value);
 
-    int get_content() const;
+    [[nodiscard]] int get_content() const;
 
-    node* get_next() const;
+    [[nodiscard]] node* get_next() const;
 
 };
