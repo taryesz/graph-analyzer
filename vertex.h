@@ -15,8 +15,6 @@ public:
 
     void set_degree(int value);
 
-    // void set_neighbors(list* value);
-
     [[nodiscard]] int get_index() const;
 
     [[nodiscard]] int get_degree() const;

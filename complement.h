@@ -20,6 +20,6 @@ long long int get_number_of_edge_complement(vertex** graph, const long long int 
     const long long int result = total_full_graph_number_of_edges - total_number_of_edges;
 
     printf("%lld\n", result); // print the result
-    return result;          // return the result
+    return result;            // return the result
 
 }

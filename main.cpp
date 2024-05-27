@@ -1,12 +1,14 @@
 #include <iostream>
 #include "vertex.h"
+#include "hashmap.h"
 #include "array.h"
+#include "sort.h"
 #include "input.h"
 #include "degree-sequence.h"
-#include "components.h"
+#include "connectivity.h"
 #include "bipartiteness.h"
-#include "greedy-coloring.h"
-#include "complement-graph.h"
+#include "coloring.h"
+#include "complement.h"
 
 int main() {
 
@@ -50,16 +52,29 @@ int main() {
 
         }
 
-        get_degree_sequence(graph, (int) number_of_vertices); // calculate the degree sequence of the graph
-        get_connectivity_number(graph, (int) number_of_vertices); // check how many parts the graph consists of
-        is_bipartite(graph, (int) number_of_vertices); // check if the graph is bipartite
+        // calculate the degree sequence of the graph
+        get_degree_sequence(graph, (int) number_of_vertices);
+
+        // check how many parts the graph consists of
+        get_connectivity_number(graph, (int) number_of_vertices);
+
+        // check if the graph is bipartite
+        is_bipartite(graph, (int) number_of_vertices);
+
         printf("?\n");
         printf("?\n");
-        color_the_graph_greedily(graph, (int) number_of_vertices); // get the sequence of colors of each vertex
+
+        // get the sequence of colors of each vertex using greedy algorithm
+        color_graph(graph, (int) number_of_vertices);
+
+        // get the sequence of colors of each vertex using LF algorithm
+        color_graph_largest_first(graph, (int) number_of_vertices);
+
         printf("?\n");
         printf("?\n");
-        printf("?\n");
-        get_number_of_edge_complement(graph, number_of_vertices); // calculate the number of missing edges to make the graph a full one
+
+        // calculate the number of missing edges to make the graph a full one
+        get_number_of_edge_complement(graph, number_of_vertices);
 
         // delete all the vertices from the graph and the graph itself
         for (int j = 0; j < number_of_vertices; j++) delete graph[j];

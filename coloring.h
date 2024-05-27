@@ -6,6 +6,7 @@ int get_next_available_color(const bool* available_colors, const int number_of_v
 
         // if this color is available (hasn't been used), return it
         if (!available_colors[i]) return i + vertex_index_increment;
+
     }
 
     // default return
@@ -13,29 +14,8 @@ int get_next_available_color(const bool* available_colors, const int number_of_v
 
 }
 
-// this function resets the array of colors (but more efficiently)
-// i.e. instead of resetting the gigantic array of colors, even most of those colors haven't been used
-// we use a list of used colors and reset only those that were actually changed
-void reset_available_colors(list* colored_neighbors, bool* available_colors) {
-
-    // create an iterator
-    node* iterator = colored_neighbors->get_head();
-
-    // iterate through the list
-    while (iterator != nullptr) {
-
-        // set the color as available
-        available_colors[iterator->get_content()] = false;
-
-        // get the next element
-        iterator = iterator->get_next();
-
-    }
-
-}
-
 // this function colors all the vertices in the graph so that no 2 adjacent vertices have the same color
-void color_the_graph_greedily(vertex** graph, const int number_of_vertices) {
+void color_graph(vertex** graph, const int number_of_vertices, bool largest_first = false, const int* indices = nullptr) {
 
     // create an array that will store the final result
     int* result_colors = new int[number_of_vertices];
@@ -55,11 +35,17 @@ void color_the_graph_greedily(vertex** graph, const int number_of_vertices) {
     // create a list to store the colored neighbors of each vertex (for time complexity purposes)
     auto* colored_neighbors = new list();
 
+    // create a map to store the vertex identifier to index mapping
+    auto* graph_hashmap = new hashmap(number_of_vertices);
+
+    // populate the graph hashmap (key as a vertex's index and value as its cardinal number)
+    for (int i = 0; i < number_of_vertices; i++) graph_hashmap->insert(graph[i]->get_index(), i);
+
     // iterate through the graph starting with the second vertex
     for (int i = 1; i < number_of_vertices; i++) {
 
         // reset the available colors array
-        reset_available_colors(colored_neighbors, available_colors);
+        reset_array(colored_neighbors, available_colors);
 
         // clear the list of colored neighbors
         colored_neighbors->clear();
@@ -70,8 +56,8 @@ void color_the_graph_greedily(vertex** graph, const int number_of_vertices) {
         // iterate through the list of neighbors of the current vertex
         while (neighbor != nullptr) {
 
-            // get the index of the neighbor
-            int neighbor_index = neighbor->get_content() - vertex_index_increment; // Assuming 1-based indexing
+            // get the current neighbor's index and find its cardinality index
+            int neighbor_index = graph_hashmap->get(neighbor->get_content());
 
             // if this neighbor has already been colored ...
             if (result_colors[neighbor_index] != default_value) {
@@ -97,11 +83,55 @@ void color_the_graph_greedily(vertex** graph, const int number_of_vertices) {
 
     }
 
-    // print the result
-    for (int i = 0; i < number_of_vertices; i++) printf("%d ", result_colors[i]);
+    // if the LF-coloring is being applied ...
+    if (largest_first && indices) {
+
+        // create a hashmap to hold the colors in the original order
+        auto* colors_hashmap = new hashmap(number_of_vertices);
+
+        // populate the colors hashmap (original index : corresponding color)
+        for (int i = 0; i < number_of_vertices; i++) colors_hashmap->insert(indices[i], result_colors[i]);
+
+        // print the colors in the original order
+        for (int i = 0; i < number_of_vertices; i++) printf("%d ", colors_hashmap->get(i));
+
+    }
+
+    // otherwise, use greedy coloring
+    else {
+
+        // print the result
+        for (int i = 0; i < number_of_vertices; i++) printf("%d ", result_colors[i]);
+
+    }
+
+    // print newline symbol for aesthetic purposes
     printf("\n");
 
-    delete [] result_colors;    // clean up memory
-    delete [] available_colors; // clean up memory
+    // clean up memory
+    delete[] result_colors;
+    delete[] available_colors;
+    colored_neighbors->clear();
+    delete colored_neighbors;
+
+}
+
+// this function specifies that the coloring technique a user wants to color a graph with is LF
+void color_graph_largest_first(vertex** graph, const int number_of_vertices) {
+
+    // create an array to store the indices of the original graph to print the result in the correct order
+    int* indices = new int[number_of_vertices];
+
+    // sort the graph by degrees in descending order
+    sort(graph, 0, number_of_vertices - 1);
+
+    // populate the indices graph with the indices of sorted graph in which order the result has to be printed
+    for (int i = 0; i < number_of_vertices; i++) indices[i] = graph[i]->get_index() - vertex_index_increment;
+
+    // launch the graph coloring
+    color_graph(graph, number_of_vertices, true, indices);
+
+    // delete the temporary array
+    delete [] indices;
 
 }
