@@ -95,6 +95,9 @@ void color_graph(vertex** graph, const int number_of_vertices, bool largest_firs
         // print the colors in the original order
         for (int i = 0; i < number_of_vertices; i++) printf("%d ", colors_hashmap->get(i));
 
+        // clean memory up
+        delete colors_hashmap;
+
     }
 
     // otherwise, use greedy coloring
@@ -113,6 +116,7 @@ void color_graph(vertex** graph, const int number_of_vertices, bool largest_firs
     delete[] available_colors;
     colored_neighbors->clear();
     delete colored_neighbors;
+    delete graph_hashmap;
 
 }
 
