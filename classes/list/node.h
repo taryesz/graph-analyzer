@@ -1,4 +1,4 @@
-#include "define.h"
+#include "../../other/define.h"
 
 class node {
 private:

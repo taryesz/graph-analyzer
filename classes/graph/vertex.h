@@ -1,4 +1,4 @@
-#include "list.h"
+#include "../list/list.h"
 
 class vertex {
 private:

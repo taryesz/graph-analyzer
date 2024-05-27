@@ -1,14 +1,14 @@
 #include <iostream>
-#include "vertex.h"
-#include "hashmap.h"
-#include "array.h"
-#include "sort.h"
+#include "classes/graph/vertex.h"
+#include "classes/hashmap/hashmap.h"
+#include "other/array.h"
+#include "other/sort.h"
 #include "input.h"
-#include "degree-sequence.h"
-#include "connectivity.h"
-#include "bipartiteness.h"
-#include "coloring.h"
-#include "complement.h"
+#include "logic/degree-sequence.h"
+#include "logic/connectivity.h"
+#include "logic/bipartiteness.h"
+#include "logic/coloring.h"
+#include "logic/complement.h"
 
 int main() {
 
