@@ -8,7 +8,7 @@ First of all, decide on how many graphs you are going to analyze. Right after yo
 
 Secondly, give the program some information about a graph, i.e. how many vertices it's going to have.
 
-Then, it's time to provide vertices: each line that you are going to fill with data is tied to a specific vertex [ *meaning that the n-th line is the n-th vertex's parameteres* ]. Start the line with a number of connections [ *adjacency* ] this vertex has and then type all the vertices' indices that this vertex is connected to.
+Then, it's time to provide the vertices themselves: each line that you are going to fill with data is tied to a specific vertex [ *meaning that the n-th line is the n-th vertex's parameters* ]. Start the line with a number of connections [ *adjacency* ] this vertex has and then type all the vertices' indices that this vertex is connected to.
 
 Repeat the process as many times as there are graphs and their vertices.
 
@@ -22,9 +22,9 @@ It is represented the following way:
 
 > 6
 
-> 4 2 3 4 5
+> 4 2 3 4 5 `1st vertex`
 
-> 2 1 5
+> 2 1 5 `2nd vertex`
 
 > 1 1
 
@@ -32,9 +32,9 @@ It is represented the following way:
 
 > 2 1 2
 
-> 0 `This vertex doesn't have any neighbors`
+> 0 `6th vertex doesn't have any neighbors, `
 
-`Note:` after each step you have to press `Enter`
+`Note` After each step you have to press `Enter`
 
 _**First input:**_ `How many graphs?`
 
@@ -48,7 +48,8 @@ _**Third input:**_ `Type in current vertex's properties`
 
 > 4 2 3 4 5
 
-`4` is a number of connections this vertex has
+`4` is a number of connections this vertex has.
+
 The following _4_ numbers `2 3 4 5` are the indices of vertices this vertex is connected to.
 
 _**Repeat until finished with all 6 vertices**_
