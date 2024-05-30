@@ -12,6 +12,20 @@ Then, it's time to provide the vertices themselves: each line that you are going
 
 Repeat the process as many times as there are graphs and their vertices.
 
+As the result, you will get the following properties checked and calculated:
+
+- Degree sequence
+
+- Connectivity number
+
+- Is bipartite?
+
+- Greedy coloring
+
+- LF [ Largest First ] coloring
+
+- Number of edges needed to complete the graph
+
 ### First Example
 
 Let's say you have this graph in mind:
@@ -34,7 +48,7 @@ It is represented the following way:
 
 > 2 1 2
 
-> 0 `6th vertex doesn't have any neighbors, `
+> 0 `6th vertex doesn't have any neighbors`
 
 `Note` After each step you have to press `Enter`
 
