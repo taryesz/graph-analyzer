@@ -16,6 +16,8 @@ Repeat the process as many times as there are graphs and their vertices.
 
 Let's say you have this graph in mind:
 
+<img width="238" alt="Screenshot 2024-05-30 at 5 31 15 PM" src="https://github.com/taryesz/graph-analyzer/assets/106448156/1c528900-3a0a-4272-a55a-eaf4a88c7a14">
+
 It is represented the following way:
 
 > 1
