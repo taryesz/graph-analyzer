@@ -11,6 +11,10 @@ public:
 
     vertex();
 
+    vertex(const vertex& other);
+
+    vertex& operator=(const vertex& other);
+
     void set_index(int value);
 
     void set_degree(int value);

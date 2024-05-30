@@ -11,6 +11,132 @@ hashmap::hashmap(int value) {
 
 }
 
+hashmap::hashmap(const hashmap& other) {
+
+    // assign values from the other object to the current one
+    this->capacity = other.capacity;
+
+    // create a new dynamic member
+    this->table = new hashnode*[this->capacity];
+
+    // iterate through the other object's dynamic member
+    for (int i = 0; i < this->capacity; i++) {
+
+        // if the element under the current index wasn't initiated, in the new dynamic member don't initiate it either
+        if (other.table[i] == nullptr) this->table[i] = nullptr;
+
+        // otherwise ...
+        else {
+
+            // create a pointer to the current object in the other table
+            hashnode* source_node = other.table[i];
+
+            // create a new object in the new table with the same values as the other's one
+            // (since objects of type "hashnode" don't have dynamic members,
+            // the program will use the default copy constructor)
+            this->table[i] = new hashnode(*source_node);
+
+            // create a pointer to the current object in the new table
+            hashnode* target_node = this->table[i];
+
+            // while there are elements in the other "hashlist" ...
+            while (source_node->get_next() != nullptr) {
+
+                // save the pointer to the next element
+                source_node = source_node->get_next();
+
+                // link the newly created node based on "source_node" to the previous one
+                target_node->set_next(new hashnode(*source_node));
+
+                // get the next element
+                target_node = target_node->get_next();
+
+            }
+
+        }
+
+    }
+
+}
+
+hashmap& hashmap::operator=(const hashmap& other) {
+
+    // if the object is being assigned to itself, return this very object
+    if (this == &other) return *this;
+
+    // iterate through the current table
+    for (int i = 0; i < this->capacity; i++) {
+
+        // create a pointer to the current element
+        hashnode* current = this->table[i];
+
+        // while there are elements on the "hashlist" ...
+        while (current != nullptr) {
+
+            // create a pointer to the next element in the "hashlist"
+            hashnode* next = current->get_next();
+
+            // delete the current object
+            delete current;
+
+            // update the current object
+            current = next;
+
+        }
+
+    }
+
+    // delete the table itself
+    delete [] this->table;
+
+    // assign values from the other object to the current one
+    this->capacity = other.capacity;
+
+    // create a new dynamic member
+    this->table = new hashnode*[this->capacity];
+
+    // iterate through the other object's dynamic member
+    for (int i = 0; i < this->capacity; i++) {
+
+        // if the element under the current index wasn't initiated, in the new dynamic member don't initiate it either
+        if (other.table[i] == nullptr) this->table[i] = nullptr;
+
+            // otherwise ...
+        else {
+
+            // create a pointer to the current object in the other table
+            hashnode* source_node = other.table[i];
+
+            // create a new object in the new table with the same values as the other's one
+            // (since objects of type "hashnode" don't have dynamic members,
+            // the program will use the default copy constructor)
+            this->table[i] = new hashnode(*source_node);
+
+            // create a pointer to the current object in the new table
+            hashnode* target_node = this->table[i];
+
+            // while there are elements in the other "hashlist" ...
+            while (source_node->get_next() != nullptr) {
+
+                // save the pointer to the next element
+                source_node = source_node->get_next();
+
+                // link the newly created node based on "source_node" to the previous one
+                target_node->set_next(new hashnode(*source_node));
+
+                // get the next element
+                target_node = target_node->get_next();
+
+            }
+
+        }
+
+    }
+
+    return *this;
+
+}
+
 void hashmap::insert(int key, int value) {
 
     // encode the key using hash-function

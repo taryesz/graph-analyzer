@@ -10,6 +10,10 @@ public:
 
     explicit hashmap(int value);
 
+    hashmap(const hashmap& other);
+
+    hashmap& operator=(const hashmap& other);
+
     void insert(int key, int value);
 
     [[nodiscard]] int hash(int key) const;
