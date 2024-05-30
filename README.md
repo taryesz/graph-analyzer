@@ -2,7 +2,7 @@
 
 This project helps its users to investigate different properties of a desirable graph.
 
-## Examplementary Usage
+## Exemplary Usage
 
 First of all, decide on how many graphs you are going to analyze. Right after you think of a number, type it in.
 
@@ -88,4 +88,4 @@ The program always check all these 6 properties for you and always prints the re
 
 ## Running Tests
 
-This repository contains a folder called "tests" where you can find 4 different `.in` files with various inputs, as well as conrresponding `.out` files with the correct outputs.
+This repository contains a folder called "tests" where you can find 4 different `.in` files with various inputs, as well as corresponding `.out` files with the correct outputs.
